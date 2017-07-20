@@ -1,0 +1,27 @@
+{
+  "name": "values-to-keys",
+  "version": "1.0.0",
+  "description": "Replace translation values with keys",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mohamedelhadi/values-to-keys.git"
+  },
+  "keywords": [
+    "json",
+    "translation",
+    "keys"
+  ],
+  "author": "Mohamed Elhadi <mohamed-elhadi@live.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/mohamedelhadi/values-to-keys/issues"
+  },
+  "homepage": "https://github.com/mohamedelhadi/values-to-keys#readme",
+  "devDependencies": {
+    "typescript": "2.4.2"
+  }
+}
