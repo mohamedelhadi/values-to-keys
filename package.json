@@ -1,20 +1,21 @@
 {
   "name": "values-to-keys",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Replace translation values with keys",
-  "main": "index.js",
+  "main": "umd/values-to-keys",
+  "types": "dist/index.d.ts",
   "scripts": {
+    "cleanup": "shx rm -rf umd dist types",
+    "prebuild": "npm run cleanup",
+    "build":
+      " tsc && tsc --target es2017 --outDir dist && webpack && webpack --env.prod",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mohamedelhadi/values-to-keys.git"
   },
-  "keywords": [
-    "json",
-    "translation",
-    "keys"
-  ],
+  "keywords": ["json", "translation", "keys"],
   "author": "Mohamed Elhadi <mohamed-elhadi@live.com>",
   "license": "MIT",
   "bugs": {
@@ -22,6 +23,15 @@
   },
   "homepage": "https://github.com/mohamedelhadi/values-to-keys#readme",
   "devDependencies": {
-    "typescript": "2.4.2"
+    "shx": "0.2.2",
+    "awesome-typescript-loader": "3.2.1",
+    "typescript": "2.4.2",
+    "uglify-js": "3.0.25",
+    "uglifyjs-webpack-plugin": "0.4.6",
+    "webpack": "3.3.0",
+    "webpack-config-utils": "2.3.0"
+  },
+  "prettier": {
+    "singleQuote": true
   }
 }
