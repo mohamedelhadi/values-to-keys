@@ -1,21 +1,49 @@
 {
   "name": "values-to-keys",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "Replace translation values with keys",
-  "main": "umd/values-to-keys",
-  "types": "dist/index.d.ts",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js",
+      "types": "./dist/types/index.d.ts"
+    }
+  },
+  "sideEffects": false,
+  "files": [
+    "dist",
+    "LICENSE",
+    "README.md",
+    "CHANGELOG.md"
+  ],
   "scripts": {
-    "cleanup": "shx rm -rf umd dist types",
-    "prebuild": "npm run cleanup",
-    "build":
-      " tsc && tsc --target es2017 --outDir dist && webpack && webpack --env.prod",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "clean": "rimraf dist",
+    "prebuild": "npm run clean",
+    "build": "npm run build:types && npm run build:esm && npm run build:cjs",
+    "build:types": "tsc --emitDeclarationOnly --outDir dist/types",
+    "build:esm": "tsc --module esnext --outDir dist/esm",
+    "build:cjs": "tsc --module commonjs --outDir dist/cjs",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "eslint src --ext .ts",
+    "format": "prettier --write \"src/**/*.ts\"",
+    "prepublishOnly": "npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/mohamedelhadi/values-to-keys.git"
   },
-  "keywords": ["json", "translation", "keys"],
+  "keywords": [
+    "json",
+    "translation",
+    "keys",
+    "i18n",
+    "internationalization"
+  ],
   "author": "Mohamed Elhadi <mohamed-elhadi@live.com>",
   "license": "MIT",
   "bugs": {
@@ -23,15 +51,23 @@
   },
   "homepage": "https://github.com/mohamedelhadi/values-to-keys#readme",
   "devDependencies": {
-    "shx": "0.2.2",
-    "awesome-typescript-loader": "3.2.1",
-    "typescript": "2.4.2",
-    "uglify-js": "3.0.25",
-    "uglifyjs-webpack-plugin": "0.4.6",
-    "webpack": "3.3.0",
-    "webpack-config-utils": "2.3.0"
+    "@types/node": "^20.11.0",
+    "@typescript-eslint/eslint-plugin": "^7.2.0",
+    "@typescript-eslint/parser": "^7.2.0",
+    "eslint": "^8.57.0",
+    "prettier": "^3.2.4",
+    "rimraf": "^5.0.5",
+    "typescript": "^5.3.3",
+    "vitest": "^1.2.1"
+  },
+  "engines": {
+    "node": ">=18.0.0"
   },
   "prettier": {
-    "singleQuote": true
+    "singleQuote": true,
+    "trailingComma": "es5",
+    "tabWidth": 2,
+    "semi": true,
+    "printWidth": 100
   }
 }

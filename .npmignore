@@ -1,0 +1,20 @@
+# This file determines which files are published to npm
+# Include these files in the npm package
+/dist
+/LICENSE
+/README.md
+/CHANGELOG.md
+/package.json
+
+# Exclude everything else
+/src
+/examples
+/.github
+/.vscode
+/node_modules
+/coverage
+/.eslintrc.json
+/.prettierrc
+/tsconfig.json
+/vitest.config.ts
+/.gitignore
